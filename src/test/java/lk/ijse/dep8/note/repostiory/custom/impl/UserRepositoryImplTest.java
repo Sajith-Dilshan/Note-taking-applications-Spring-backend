@@ -76,4 +76,24 @@ class UserRepositoryImplTest {
         // then
         assertTrue(count >= 2);
     }
+
+
+    @Test
+    void existsUserByEmail() {
+        // given
+        User user1 = new User(UUID.randomUUID().toString(), "dualnga@ijse.lk", "abc", "Dulanga");
+        User user2 = new User(UUID.randomUUID().toString(), "lahiru@ijse.lk", "abc", "Lahiru");
+        userRepository.save(user1);
+        userRepository.save(user2);
+
+        // when
+        boolean dulaExists = userRepository.existsUserByEmail("dualnga@ijse.lk");
+        boolean lahiruExists = userRepository.existsUserByEmail("lahiru@ijse.lk");
+        boolean abcExists = userRepository.existsUserByEmail("abc@ijse.lk");
+
+        // then
+        assertTrue(dulaExists);
+        assertTrue(lahiruExists);
+        assertFalse(abcExists);
+    }
 }
