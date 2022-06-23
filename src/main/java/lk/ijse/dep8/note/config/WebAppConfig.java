@@ -15,8 +15,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import java.util.Properties;
 
 @Configuration
-@EnableWebMvc
-@ComponentScan(basePackageClasses = WebAppInitializer.class)
+//@EnableWebMvc
+@ComponentScan( basePackageClasses = WebAppInitializer.class)
 public class WebAppConfig {
 
     @Bean

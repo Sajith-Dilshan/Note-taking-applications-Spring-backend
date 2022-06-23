@@ -15,7 +15,7 @@ import java.util.Properties;
 public class WebRootConfig {
 
     @Bean
-    public static YamlPropertiesFactoryBean yamlPropertiesFactory(ConfigurableEnvironment env){
+    public static YamlPropertiesFactoryBean yamlPropertiesFactory(ConfigurableEnvironment env) {
         YamlPropertiesFactoryBean yamlFactory = new YamlPropertiesFactoryBean();
         yamlFactory.setResources(new ClassPathResource("application.yaml"));
         Properties yamlProps = yamlFactory.getObject();
