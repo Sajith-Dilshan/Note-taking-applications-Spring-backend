@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -29,12 +30,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO registerUser(UserDTO user) throws DuplicateEmailException {
         if (userRepository.existsUserByEmail(user.getEmail())) throw new DuplicateEmailException("Email already exists");
+        user.setId(UUID.randomUUID().toString());
         return transformer.getUserDTO(userRepository.save(transformer.getUserEntity(user)));
     }
 
     @Override
     public void updateUser(UserDTO user) throws NotFoundException {
-        Optional<User> optUser = userRepository.findById(user.getEmail());
+        Optional<User> optUser = userRepository.findById(user.getId());
         if (!optUser.isPresent()) throw new NotFoundException("Invalid user id");
         optUser.get().setFullName(user.getFullName());
         optUser.get().setPassword(user.getPassword());

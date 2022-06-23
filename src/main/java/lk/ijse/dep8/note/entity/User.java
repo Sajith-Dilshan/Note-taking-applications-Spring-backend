@@ -23,6 +23,13 @@ public class User implements SuperEntity {
     @OneToMany(mappedBy = "user", cascade = {CascadeType.REMOVE})
     private List<Note> notes = new ArrayList<>();
 
+    public User(String id, String email, String password, String fullName) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.fullName = fullName;
+    }
+
     @PrePersist
     private void beforePersist(){
         notes.forEach(note -> note.setUser(this));
