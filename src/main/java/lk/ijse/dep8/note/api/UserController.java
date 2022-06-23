@@ -1,5 +1,6 @@
 package lk.ijse.dep8.note.api;
 
+import jakarta.validation.Valid;
 import lk.ijse.dep8.note.dto.UserDTO;
 import lk.ijse.dep8.note.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -17,8 +18,7 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = "application/json", produces = "application/json")
-    public UserDTO registerUser(@RequestBody UserDTO user) {
-        // Todo: Validate the user
+    public UserDTO registerUser(@RequestBody @Valid UserDTO user) {
         return userService.registerUser(user);
     }
 
@@ -35,9 +35,7 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PatchMapping(path = "/{userId:[A-Fa-f0-9\\-]{36}}", consumes = "application/json")
-    public void updateUser(@PathVariable String userId, @RequestBody UserDTO user) {
-        /* Todo: Validate the user */
-
+    public void updateUser(@PathVariable String userId, @RequestBody @Valid UserDTO user) {
         user.setId(userId);
         userService.updateUser(user);
     }
