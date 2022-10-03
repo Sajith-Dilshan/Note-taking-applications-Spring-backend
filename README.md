@@ -2,7 +2,7 @@
 
 ### REST API Documentation
 [User Service API Reference](https://documenter.getpostman.com/view/20425000/2s83tJFVKL) <br>
-[Note Service API Reference](/)
+[Note Service API Reference](https://documenter.getpostman.com/view/20425000/2s83tJFVU4)
 
 ### Version
 1.0.0
